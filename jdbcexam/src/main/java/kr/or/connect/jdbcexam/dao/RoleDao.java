@@ -169,6 +169,9 @@ public class RoleDao {
 		return updateCount;
 	}
 	
+// ============addRole===================================================
+	
+/*
 	// 몇건 입력 되었습니다. 
 	public int addRole(Role role) {
 		int insertCount = 0;
@@ -211,7 +214,37 @@ public class RoleDao {
  		} // finally
 		return insertCount;
 	}
+*/
 	
+	// try-with resource 이용
+	public int addRole(Role role) {
+		System.out.println("ROLEDAO2 addRole");
+		int insertCount = 0;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}catch(ClassNotFoundException ce) {
+			ce.printStackTrace();
+		}
+		
+		String sql = "INSERT INTO role(role_id, description) VALUES(?,?)";
+		try (Connection conn = DriverManager.getConnection(dburl, dbUser, dbpasswd);
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setInt(1, role.getRoleId());
+			ps.setString(2, role.getDescription());
+			
+			insertCount = ps.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return insertCount;
+	}
+	
+// ============getRole===================================================
+	
+/*
 	public Role getRole(Integer roleId) {
 		Role role = null;
 		Connection conn = null;
@@ -264,6 +297,41 @@ public class RoleDao {
 				}
 			}
 		}
+		return role;
+	}
+ */
+	
+	// try-with resource 이용 
+	public Role getRole(Integer roleId) {
+		Role role = null;
+		System.out.println("ROLEDAO2 getRole");
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String sql = "SELECT description, role_id FROM role WHERE role_id = ?";
+		try (Connection conn = DriverManager.getConnection(dburl, dbUser, dbpasswd);
+				PreparedStatement ps = conn.prepareCall(sql)) {
+			
+			ps.setInt(1, roleId);
+			
+			try (ResultSet rs = ps.executeQuery()) {
+				while(rs.next()) {
+					String description = rs.getString("description");
+					Integer id = rs.getInt("role_id");
+					
+					role = new Role(id, description);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return role;
 	}
 }
