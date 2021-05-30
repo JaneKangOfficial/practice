@@ -1,15 +1,16 @@
 package kr.or.connect.jdbcexam;
 
 import kr.or.connect.jdbcexam.dao.RoleDao;
-import kr.or.connect.jdbcexam.dto.Role;
 
-public class JDBCExam1 {
+public class JDBCExam4 {
 
-	// SELECT 
+	// DELETE 
 	public static void main(String[] args) {
+		int roleId = 500;
+		
 		RoleDao dao = new RoleDao();
-		Role role = dao.getRole(100);
-		System.out.println(role);
+		int deleteCount = dao.deleteRole(roleId);
+		
+		System.out.println(deleteCount);
 	}
-	
 }

@@ -1,15 +1,21 @@
 package kr.or.connect.jdbcexam;
 
+import java.util.List;
+
 import kr.or.connect.jdbcexam.dao.RoleDao;
 import kr.or.connect.jdbcexam.dto.Role;
 
-public class JDBCExam1 {
-
-	// SELECT 
+public class JDBCExam3 {
 	public static void main(String[] args) {
+		
+		// SELECT * 
 		RoleDao dao = new RoleDao();
-		Role role = dao.getRole(100);
-		System.out.println(role);
+		
+		List<Role> list = dao.getRoles();
+		
+		for(Role role : list) {
+			System.out.println(role);
+		}
 	}
 	
 }
