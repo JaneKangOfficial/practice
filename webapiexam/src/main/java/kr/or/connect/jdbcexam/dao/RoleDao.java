@@ -62,14 +62,16 @@ public class RoleDao {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("드라이버 검색 성공!!!");
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println("드라이버 검색 실패...");
 		}
 		
 		String sql = "SELECT description, role_id FROM role ORDER BY role_id DESC";
 		try (Connection conn = DriverManager.getConnection(dburl, dbUser, dbpasswd);
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-			
+			System.out.println("드라이버 접속 성공!!!");
 			try (ResultSet rs = ps.executeQuery()) {
 				
 				while (rs.next()) {
@@ -83,6 +85,7 @@ public class RoleDao {
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("드라이버 접속 실패...");
 		}
 		// try-with resource 라는 문장을 이용하여 close 따로 작성 안한다. 알아서 close 해준다.  
 		
