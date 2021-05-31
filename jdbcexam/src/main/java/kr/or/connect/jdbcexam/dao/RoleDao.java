@@ -218,7 +218,7 @@ public class RoleDao {
 	
 	// try-with resource 이용
 	public int addRole(Role role) {
-		System.out.println("ROLEDAO2 addRole");
+		System.out.println("ROLEDAO addRole");
 		int insertCount = 0;
 		
 		try {
@@ -304,7 +304,7 @@ public class RoleDao {
 	// try-with resource 이용 
 	public Role getRole(Integer roleId) {
 		Role role = null;
-		System.out.println("ROLEDAO2 getRole");
+		System.out.println("ROLEDAO getRole");
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
