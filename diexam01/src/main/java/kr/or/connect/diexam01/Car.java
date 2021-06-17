@@ -1,13 +1,21 @@
 package kr.or.connect.diexam01;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+// ApplicationConfig2.java 에서 @ComponentScan 사용 
+@Component
 public class Car {
 
+	@Autowired
 	private Engine v8;
 	
 	public Car() {
 		System.out.println("Car 생성자");
 	}
 	
+	// ApplicationConfig2.java 에서는 setter method를 @Autowired 로 대체한다. (setter method 삭제) 	
+ 	// ApplicationFonfig.java 에서 사용 setter method 
 	public void setEngine(Engine e) {
 		this.v8 = e;
 	}

@@ -1,5 +1,9 @@
 package kr.or.connect.diexam01;
 
+import org.springframework.stereotype.Component;
+
+//ApplicationConfig2.java 에서 @ComponentScan 사용 
+@Component
 public class Engine {
 
 	public Engine() {
