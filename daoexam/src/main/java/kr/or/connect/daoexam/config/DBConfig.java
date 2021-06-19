@@ -16,6 +16,7 @@ public class DBConfig {
     private String username = "connectuser";
     private String password = "connect123!@#";
 
+    // DataSource 생성 객체 
     @Bean
     public DataSource dataSource() {
     	BasicDataSource dataSource = new BasicDataSource();
