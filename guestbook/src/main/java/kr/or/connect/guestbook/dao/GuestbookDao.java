@@ -39,7 +39,6 @@ public class GuestbookDao {
 	        return jdbc.query(SELECT_PAGING, params, rowMapper);
 	    }
 
-
 		public Long insert(Guestbook guestbook) {
 			SqlParameterSource params = new BeanPropertySqlParameterSource(guestbook);
 			return insertAction.executeAndReturnKey(params).longValue();
