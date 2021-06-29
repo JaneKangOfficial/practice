@@ -36,6 +36,7 @@ public class Log {
 
 	@Override
 	public String toString() {
+		System.out.println("Log.java => toString");
 		return "Log [id=" + id + ", ip=" + ip + ", method=" + method + ", regdate=" + regdate + "]";
 	}
 	

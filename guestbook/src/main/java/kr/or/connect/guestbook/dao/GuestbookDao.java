@@ -26,6 +26,7 @@ public class GuestbookDao {
 	    private RowMapper<Guestbook> rowMapper = BeanPropertyRowMapper.newInstance(Guestbook.class);
 
 	    public GuestbookDao(DataSource dataSource) {
+	    	System.out.println("GuestbookDao.java => GuestbookDao");
 	        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	        this.insertAction = new SimpleJdbcInsert(dataSource)
 	                .withTableName("guestbook")
@@ -33,6 +34,7 @@ public class GuestbookDao {
 	    }
 	    
 	    public List<Guestbook> selectAll(Integer start, Integer limit) {
+	    	System.out.println("GuestbookDao.java => selectAll");
 	    		Map<String, Integer> params = new HashMap<>();
 	    		params.put("start", start);
 	    		params.put("limit", limit);
@@ -40,16 +42,19 @@ public class GuestbookDao {
 	    }
 
 		public Long insert(Guestbook guestbook) {
+			System.out.println("GuestbookDao.java => insert");
 			SqlParameterSource params = new BeanPropertySqlParameterSource(guestbook);
 			return insertAction.executeAndReturnKey(params).longValue();
 		}
 		
 		public int deleteById(Long id) {
+			System.out.println("GuestbookDao.java => deleteById");
 			Map<String, ?> params = Collections.singletonMap("id", id);
 			return jdbc.update(DELETE_BY_ID, params);
 		}
 		
 		public int selectCount() {
+			System.out.println("GuestbookDao.java => selectCount");
 			return jdbc.queryForObject(SELECT_COUNT, Collections.emptyMap(), Integer.class);
 		}
 }

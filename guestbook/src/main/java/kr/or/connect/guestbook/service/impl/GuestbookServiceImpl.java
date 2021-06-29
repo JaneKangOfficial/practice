@@ -25,6 +25,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 	@Override
 	@Transactional // == readOnly
 	public List<Guestbook> getGuestbooks(Integer start) {
+		System.out.println("GuestbookServiceImpl.java => getGuestbooks");
 		List<Guestbook> list = guestbookDao.selectAll(start, GuestbookService.LIMIT);
 		return list;
 	}
@@ -32,6 +33,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 	@Override
 	@Transactional(readOnly=false)
 	public int deleteGuestbook(Long id, String ip) {
+		System.out.println("GuestbookServiceImpl.java => deleteGuestbook");
 		int deleteCount = guestbookDao.deleteById(id);
 		Log log = new Log();
 		log.setIp(ip);
@@ -44,6 +46,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 	@Override
 	@Transactional(readOnly=false)
 	public Guestbook addGuestbook(Guestbook guestbook, String ip) {
+		System.out.println("GuestbookServiceImpl.java => addGuestbook");
 		guestbook.setRegdate(new Date());
 		Long id = guestbookDao.insert(guestbook);
 		guestbook.setId(id);
@@ -59,6 +62,7 @@ public class GuestbookServiceImpl implements GuestbookService {
 
 	@Override
 	public int getCount() {
+		System.out.println("GuestbookServiceImpl.java => getCount");
 		return guestbookDao.selectCount();
 	}
 	

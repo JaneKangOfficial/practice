@@ -12,6 +12,7 @@ import kr.or.connect.guestbook.service.GuestbookService;
 public class GuestbookServiceTest {
 
 	public static void main(String[] args) {
+		System.out.println("GuestbookServiceTest.java => main");
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		GuestbookService guestbookService = ac.getBean(GuestbookService.class);
 		

@@ -12,6 +12,7 @@ import kr.or.connect.guestbook.dto.Log;
 public class GuestbookDaoTest {
 
 	public static void main(String[] args) {
+		System.out.println("GuestbookDaoTest.java => main");
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
 //		GuestbookDao guestbookDao = ac.getBean(GuestbookDao.class);
 		

@@ -36,6 +36,7 @@ public class Guestbook {
 
 	@Override
 	public String toString() {
+		System.out.println("Guestbook.java => toString");
 		return "Guestbook [id=" + id + ", name=" + name + ", content=" + content + ", regdate=" + regdate + "]";
 	}
 }

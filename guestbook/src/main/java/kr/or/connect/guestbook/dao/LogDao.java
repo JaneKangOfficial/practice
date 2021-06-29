@@ -17,6 +17,7 @@ public class LogDao {
     private SimpleJdbcInsert insertAction;
 
     public LogDao(DataSource dataSource) {
+    	System.out.println("LogDao.java => LogDao");
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
         this.insertAction = new SimpleJdbcInsert(dataSource)
                 .withTableName("log")
@@ -24,6 +25,7 @@ public class LogDao {
     }
 
 	public Long insert(Log log) {
+		System.out.println("LogDao.java => insert");
 		SqlParameterSource params = new BeanPropertySqlParameterSource(log);
 		return insertAction.executeAndReturnKey(params).longValue();
 	}

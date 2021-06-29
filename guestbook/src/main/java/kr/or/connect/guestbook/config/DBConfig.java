@@ -31,6 +31,7 @@ public class DBConfig implements TransactionManagementConfigurer {
 
 	@Bean
 	public DataSource dataSource() {
+		System.out.println("DBConfig.java => DataSource");
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
 		dataSource.setUrl(url);
@@ -41,11 +42,13 @@ public class DBConfig implements TransactionManagementConfigurer {
 
 	@Override
 	public PlatformTransactionManager annotationDrivenTransactionManager() {
-		return transactionManger();
+		System.out.println("DBConfig.java => annotationDrivenTransactionManager");
+		return transactionManager();
 	}
 
 	@Bean
-	public PlatformTransactionManager transactionManger() {
+	public PlatformTransactionManager transactionManager() {
+		System.out.println("DBConfig.java => transactionManager");
 		return new DataSourceTransactionManager(dataSource());
 	}
 }

@@ -11,5 +11,5 @@ public interface GuestbookService {
 	public int deleteGuestbook(Long id, String ip);
 	public Guestbook addGuestbook(Guestbook guestbook, String ip);
 	public int getCount();
-	
+
 }

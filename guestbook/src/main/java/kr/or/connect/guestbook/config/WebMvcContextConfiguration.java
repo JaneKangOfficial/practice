@@ -22,6 +22,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		System.out.println("WebMvcContextConfiguration.java => addResourceHandlers");
         registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(31556926);
         registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(31556926);
         registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(31556926);
@@ -30,12 +31,14 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
     // default servlet handler를 사용하게 합니다. (mapping 정보가 없는 url 요청이 들어왔을 때 DefaultServletHttpRequesetHandler가 처리하도록 한다.) 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+    	System.out.println("WebMvcContextConfiguration.java => configureDefaultServletHandling");
         configurer.enable();
     }
    
     // 특정 url에 대한 처리를 controller 작성하지 않고 mapping 할 수 있도록 한다. 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
+    	System.out.println("WebMvcContextConfiguration.java => addViewControllers");
     		System.out.println("addViewControllers가 호출됩니다. ");
         registry.addViewController("/").setViewName("index");
     }
@@ -43,6 +46,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
     // ViewResolver가 ViewName을 찾을 수 있도록 한다. 
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
+    	System.out.println("WebMvcContextConfiguration.java => InternalResourceViewResolver");
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
